@@ -539,18 +539,141 @@
 //}
 
 // 7. 指向函数指针数组的指针
-void test(const char* str)
+//void test(const char* str)
+//{
+//	printf("%s\n", str);
+//}
+//int main()
+//{
+//	//函数指针pfun
+//	void (*pfun)(const char*) = test;
+//	//函数指针的数组pfunArr
+//	void (*pfunArr[5])(const char* str);
+//	pfunArr[0] = test;
+//	//指向函数指针数组pfunArr的指针ppfunArr
+//	void ( *( *ppfunArr )[5] )( const char* ) = &pfunArr;
+//	return 0;
+//}
+
+// 8.回调函数
+#include <stdio.h>
+
+//void menu()
+//{
+//	printf("******************************\n");
+//	printf("******    1.Add  2.Sub   *****\n");
+//	printf("******    3.Mul  4.Div   *****\n");
+//	printf("******       0.exit      *****\n");
+//	printf("******************************\n");
+//}
+//
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//
+//void calc(int (*p)(int, int))
+//{
+//	int x = 0;
+//	int y = 0;
+//	int ret = 0;
+//	printf("请输入要计算的两个数:->");
+//	scanf("%d %d", &x, &y);
+//	ret = p(x, y);
+//	printf("%d\n", ret);
+//}
+//
+//int main()
+//{
+//	int input = 0;
+//	do
+//	{
+//		menu();
+//		printf("请输入数字选择：->");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			calc(Add);
+//			break;
+//		case 2:
+//			calc(Sub);
+//			break;
+//		case 3:
+//			calc(Mul);
+//			break;
+//		case 4:
+//			calc(Div);
+//			break;
+//		case 0:
+//			printf("退出计算器");
+//			break;
+//		default:
+//			printf("输入有误，请重新输入！\n");
+//			break;
+//		}
+//	} while (input);
+//	return 0;
+//}
+
+// 冒泡排序
+
+void bubble_sort(int arr[], int sz)
 {
-	printf("%s\n", str);
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < sz - 1; i++)
+	{
+		for (j = 0; j < sz - 1 - i; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				int tmp = 0;
+				tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+			}
+		}
+	}
 }
+
+void print(int arr[], int sz)
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+
+void test1()
+{
+	// 冒泡排序
+	// 对整型数组进行排序，升序排序
+	int arr[] = { 2,1,3,7,5,9,6,8,0,4 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	bubble_sort(arr, sz);
+	print(arr, sz);
+}
+
 int main()
 {
-	//函数指针pfun
-	void (*pfun)(const char*) = test;
-	//函数指针的数组pfunArr
-	void (*pfunArr[5])(const char* str);
-	pfunArr[0] = test;
-	//指向函数指针数组pfunArr的指针ppfunArr
-	void ( *( *ppfunArr )[5] )( const char* ) = &pfunArr;
+	// test1();
 	return 0;
 }
