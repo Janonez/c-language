@@ -63,49 +63,122 @@
 //输入一个整数数组，实现一个函数，
 //来调整该数组中数字的顺序使得数组中所有的奇数位于数组的前半部分，
 //所有偶数位于数组的后半部分。
-#include <stdio.h>
+//#include <stdio.h>
 //void swap_odd_even(int arr[], int sz)
 //{
-//	int i = 0;
-//	int j = 0;
 //	int tmp = 0;
 //	int left = 0;
 //	int right = sz - 1;
-//	for (i = 0; i < sz-1; i++)
+//	while (left < right)
 //	{
-//		for (j = 0; j < sz - i; j++)
+//		while ((left < right) && (arr[left] % 2 == 1))
 //		{
-//			if (arr[i] % 2 == 0)
-//			{
-//				tmp = arr[i];
-//				arr[i] = arr[1+i];
-//				arr[1 + i] = tmp;
-//			}
+//			left++;
+//		}
+//		while ((left < right) && (arr[right] % 2 == 0))
+//		{
+//			right--;
+//		}
+//		if (left < right)
+//		{
+//			tmp = arr[left];
+//			arr[left] = arr[right];
+//			arr[right] = tmp;
+//			left++;
+//			right--;
 //		}
 //	}
-//	for (i = 0; i < 10; i++)
+//}
+//void print(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz;i++)
 //	{
-//		printf("%d ",arr[i]);
+//		printf("%d ", arr[i]);
 //	}
+//	printf("\n");
 //}
 //int main()
 //{
 //	int i = 0;
-//	int arr[10];
-//	for (i = 0; i < 10; i++)
-//	{
-//		scanf("%d", &arr[i]);
-//	}
-//	swap_odd_even(arr, 10);
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	print(arr, sz);
+//	swap_odd_even(arr, sz);
+//	print(arr, sz);
 //	return 0;
 //}
 
+
+// 模拟实现库函数strcpy
+//#include <stdio.h>
+//#include <assert.h>
+//void my_strcpy(char arr1[], char arr2[])
+//{
+//	assert(arr1 && arr2);
+//	while (*arr2 != '\0')
+//	{
+//		*arr1 = *arr2;
+//		arr1++;
+//		arr2++;
+//	}
+//}
 //int main()
 //{
-//	unsigned char a = 200;
-//	unsigned char b = 100;
-//	unsigned char c = 0;
-//	c = a + b;
-//	printf("%d %d", a + b, c);
+//	char arr1[20] = { 0 };
+//	char arr2[20] = "Hello World";
+//	my_strcpy(arr1, arr2);
+//	printf("%s", arr1);
 //	return 0;
 //}
+
+
+// 模拟实现库函数strlen
+//#include <stdio.h>
+//int my_strlen(char arr[])
+//{
+//	int count = 0;
+//	while (*arr != '\0')
+//	{
+//		count++;
+//		arr++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char arr[] = "Hello World";
+//	int ret = my_strlen(arr);
+//	printf("%d", ret);
+//	return 0;
+//}
+
+// 输入一个整数序列，判断是否是有序序列，
+// 有序，指序列中的整数从小到大排序或者从大到小排序(相同元素也视为有序)。
+// 数据范围：3≤n≤50  序列中的值都满足 1≤val≤100
+#include <stdio.h>
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	int arr[] = { 0 };
+	int i = 0;
+	int frag1 = 0;// 判断是否为升序
+	int frag2 = 0;// 判断是否为降序
+	for (i = 0; i < n; i++)
+	{
+		scanf("%d", arr[i]);
+		if (i > 0)
+		{
+			if (arr[i] < arr[i - 1])
+				frag1 = 1;
+			else if (arr[i] > arr[i - 1])
+				frag2 = 1;
+		}
+	}
+	if (frag1 + frag2 <= 1)
+		printf("sorted");
+	else
+		printf("unsorted");
+	return 0;
+}
