@@ -4,17 +4,14 @@
 //#include <stdio.h>
 //int main()
 //{
-//	int money = 20;
-//	int price = 1;
-//	int sum = money / price;
+//	int money = 0;
+//	scanf("%d", &money);
+//	int sum = money;
 //	int bottle = sum;
-//	int tmp = 0;
-//	while (bottle / 2 != 0)
+//	while (bottle >= 2)
 //	{
-//		tmp = bottle;
-//		bottle = bottle / 2;
-//		sum += bottle;
-//		bottle = tmp % 2 + bottle;
+//		sum += bottle / 2;
+//		bottle = bottle % 2 + bottle / 2;
 //	}
 //	printf("%d\n",sum);
 //	return 0;
@@ -27,24 +24,23 @@
 // 1461 = 1 * 461 + 14 * 61 + 146 * 1
 // 求出5位数中的所有 Lily Number。
 //#include <stdio.h>
+//#include <math.h>
 //int main()
 //{
-//	int i = 0;
-//	
-//	// 1234 5
-//	for (i = 10000; i <= 99999; i++)
-//	{
-//		int sum = 0;
-//		int ret = 0;
-//		ret = i;
-//		sum += (ret / 10) * (ret % 10) + (ret / 100) * (ret % 100) + 
-//			(ret / 1000) * (ret % 1000) + (ret / 10000) * (ret % 10000);
-//		if (sum == i)
-//		{
-//			printf("%d ", i);
-//		}
-//	}
-//	return 0;
+//    int i = 0;
+//    for (i = 10000; i <= 99999; i++)
+//    {
+//        int j = 0;
+//        int sum = 0;
+//        for (j = 1; j <= 4; j++)
+//        {
+//            int ret = (int)pow(10, j);
+//            sum += (i / ret) * (i % ret);
+//        }
+//        if (sum == i)
+//            printf("%d ", i);
+//    }
+//    return 0;
 //}
 
 
@@ -104,12 +100,12 @@
 //	return 0;
 //}
 
-int main()
-{
-	unsigned char a = 200;
-	unsigned char b = 100;
-	unsigned char c = 0;
-	c = a + b;
-	printf("%d %d", a + b, c);
-	return 0;
-}
+//int main()
+//{
+//	unsigned char a = 200;
+//	unsigned char b = 100;
+//	unsigned char c = 0;
+//	c = a + b;
+//	printf("%d %d", a + b, c);
+//	return 0;
+//}
