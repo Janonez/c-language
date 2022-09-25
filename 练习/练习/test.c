@@ -314,3 +314,34 @@
 //	}
 //	return 0;
 //}
+
+
+// KiKi学习了循环，BoBo老师给他出了一系列打印图案的练习，该任务是打印用“*”组成的X形图案。
+//#include <stdio.h>
+//int main()
+//{
+//    int n = 0;
+//    while (scanf("%d", &n) != EOF)
+//    {
+//        int i = 0;
+//        int j = 0;
+//        for (i = 0; i < n; i++)
+//        {
+//            for (j = 0; j < n; j++)
+//            {
+//                if (i == j)
+//                {
+//                    printf("*");
+//                }
+//                else if (i + j == n - 1)
+//                {
+//                    printf("*");
+//                }
+//                else
+//                    printf(" ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
