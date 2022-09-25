@@ -185,27 +185,132 @@
 
 
 // 输入n个成绩，换行输出n个成绩中最高分数和最低分数的差。
-#include <stdio.h>
-int main()
-{
-    int n = 0;
-    scanf("%d", &n);
-    int i = 0;
-    int max = 0;
-    int min = 100;
-    int score = 0;
-    for (i = 0; i < n; i++)
-    {
-        scanf("%d", &score);
-        if (score > max)
-        {
-            max = score;
-        }
-        if (score < min)
-        {
-            min = score;
-        }
-    }
-    printf("%d\n", max - min);
-    return 0;
-}
+//#include <stdio.h>
+//int main()
+//{
+//    int n = 0;
+//    scanf("%d", &n);
+//    int i = 0;
+//    int max = 0;
+//    int min = 100;
+//    int score = 0;
+//    for (i = 0; i < n; i++)
+//    {
+//        scanf("%d", &score);
+//        if (score > max)
+//        {
+//            max = score;
+//        }
+//        if (score < min)
+//        {
+//            min = score;
+//        }
+//    }
+//    printf("%d\n", max - min);
+//    return 0;
+//}
+
+
+// 输入两个升序排列的序列，将两个序列合并为一个有序序列并输出。
+// 数据范围：1≤n, m≤1000，序列中的值满足 0≤val≤30000
+// 输入描述：
+// 输入包含三行
+// 第一行包含两个正整数n, m，用空格分隔。n表示第二行第一个升序序列中数字的个数，
+// m表示第三行第二个升序序列中数字的个数。
+// 第二行包含n个整数，用空格分隔。
+// 第三行包含m个整数，用空格分隔。
+// 输出描述：
+// 输出为一行，输出长度为n + m的升序序列，
+// 即长度为n的升序序列和长度为m的升序序列中的元素重新进行升序序列排列合并。
+
+// 合并为一个数组，冒泡排序
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 0;
+//	int m = 0;
+//	scanf("%d %d", &n, &m);
+//	int i = 0;
+//	int j = 0;
+//	int arr1[1000];
+//	int arr2[1000];
+//	int arr3[1000];
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//		arr3[i] = arr1[i];
+//	}
+//	for (i = 0; i < m; i++)
+//	{
+//		scanf("%d", &arr2[i]);
+//		arr3[i + n] = arr2[i];
+//	}
+//	// 冒泡排序
+//	for (i = 0; i < m + n; i++)
+//	{
+//		for (j = 0; j < m + n - 1 - i; j++)
+//		{
+//			if (arr3[j] > arr3[j + 1])
+//			{
+//				int tmp = arr3[j];
+//				arr3[j] = arr3[j + 1];
+//				arr3[j + 1] = tmp;
+//			}
+//		}
+//	}
+//	for (i = 0; i < m + n; i++)
+//	{
+//		printf("%d ", arr3[i]);
+//	}
+//	return 0;
+//}
+
+// 比较两数组大小直接打印
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 0;
+//	int m = 0;
+//	scanf("%d %d", &n, &m);
+//	int i = 0;
+//	int j = 0;
+//	int arr1[1000];
+//	int arr2[1000];
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//	}
+//	for (i = 0; i < m; i++)
+//	{
+//		scanf("%d", &arr2[i]);
+//	}
+//	i = 0; j = 0;
+//	while (i < n && j < m)
+//	{
+//		if (arr1[i] > arr2[j])
+//		{
+//			printf("%d ", arr2[j]);
+//			j++;
+//		}
+//		else
+//		{
+//			printf("%d ", arr1[i]);
+//			i++;
+//		}
+//	}
+//	if (i == n)
+//	{
+//		for (; j < m; j++)
+//		{
+//			printf("%d ", arr2[j]);
+//		}
+//	}
+//	else
+//	{
+//		for (; i < n; i++)
+//		{
+//			printf("%d ", arr1[i]);
+//		}
+//	}
+//	return 0;
+//}
