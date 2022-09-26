@@ -402,6 +402,10 @@
 //    // 11111111 11111111 11111111 11111110
 //    // 11111111 11111111 11111111 11111111
 //    printf("%d\n", strlen(a));
+//    for (i = 0; i < 1000; i++)
+//    {
+//        printf("%d ", a[i]);
+//    }
 //    printf("%d\n", v);
 //    printf("%u\n", v);
 //    return 0;
@@ -457,16 +461,69 @@
 //C说：是D。
 //D说：C在胡说
 //已知3个人说了真话，1个人说的是假话。
-#include <stdio.h>
-int main()
-{
-	char killer = 0;
-	for (killer = 'A'; killer <= 'D'; killer++)
-	{
-		if ((killer!='A') + (killer == 'C') + (killer == 'D') + (killer != 'D') == 3)
-		{
-			printf("%c\n", killer);
-		}
-	}
-	return 0;
-}
+//#include <stdio.h>
+//int main()
+//{
+//	char killer = 0;
+//	for (killer = 'A'; killer <= 'D'; killer++)
+//	{
+//		if ((killer!='A') + (killer == 'C') + (killer == 'D') + (killer != 'D') == 3)
+//		{
+//			printf("%c\n", killer);
+//		}
+//	}
+//	return 0;
+//}
+
+
+//杨辉三角
+//    1
+//  1 2 1
+// 1 3 3 1
+//1 4 6 4 1
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	int arr[100][100];
+//	int i = 0;
+//	int j = 0;
+//	// 初始化数组
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++)
+//		{
+//			arr[i][j] = 0;
+//		}
+//	}
+//	// 将各组首元素初始化为1
+//	
+//	for (i = 0; i < n; i++)
+//	{
+//		arr[i][0] = 1;
+//	}
+//	// 第i行j列元素为第i-1行j-1列和i-1行j列数的和
+//	for (i = 1; i < n; i++)
+//	{
+//		for (j = 1; j <= i; j++)
+//		{
+//			arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+//		}
+//	}
+//	// 打印
+//	for (i = 0; i < n; i++)
+//	{
+//		// 打印空格
+//		for (j = 0; j < n - i; j++)
+//		{
+//			printf(" ");
+//		}
+//		for (j = 0; j <= i; j++)
+//		{
+//			printf("%d ",arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
