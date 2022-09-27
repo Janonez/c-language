@@ -85,9 +85,26 @@
 //使用函数指针实现回调函数
 
 
+
+//一维数组
 //关于数组名
 //数组名是数组首元素的地址
 //但是有2个例外：
 //1. sizeof(数组名) - 数组名表示整个数组，计算的是整个数组的大小，单位是字节
 //2. &数组名 - 数组名也表示整个数组，取出的是整个数组的地址
 //除了这个2个例外，你见到的所有的数组名都表示首元素的地址
+int main()
+{
+	int a[] = { 1,2,3,4 };
+	printf("%d\n", sizeof(a));// 16
+	printf("%d\n", sizeof(a + 0));
+	printf("%d\n", sizeof(*a));
+	printf("%d\n", sizeof(a + 1));
+	printf("%d\n", sizeof(a[1]));
+	printf("%d\n", sizeof(&a));
+	printf("%d\n", sizeof(*&a));
+	printf("%d\n", sizeof(&a + 1));
+	printf("%d\n", sizeof(&a[0]));
+	printf("%d\n", sizeof(&a[0] + 1));
+	return 0;
+}
