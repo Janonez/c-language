@@ -149,3 +149,52 @@ int main()
 	printf("%d\n", strlen(&arr[0] + 1));// 随机值 - 得到数组第二个元素的地址
 	return 0;
 }
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char arr[] = "abcdef";
+
+	printf("%d\n", sizeof(arr));// 7 - arr在sizeof内单独使用，表示整个数组，含有\0
+	printf("%d\n", sizeof(arr + 0));// 4/8 - 首元素地址
+	printf("%d\n", sizeof(*arr));// 1 - *arr得到的是字符a，char类型
+	printf("%d\n", sizeof(arr[1]));// 1 - arr[1]表示数组第二个元素
+	printf("%d\n", sizeof(&arr));// 4/8 - 取出整个数组地址
+	printf("%d\n", sizeof(&arr + 1));// 4/8 - 取出数组地址，跳过整个数组
+	printf("%d\n", sizeof(&arr[0] + 1));// 4/8 - 第二个元素地址
+
+	printf("%d\n", strlen(arr));// 6 - 首元素地址，直到\0停止
+	printf("%d\n", strlen(arr + 0));// 6 - 首元素地址，直到\0停止
+	printf("%d\n", strlen(*arr));// err
+	printf("%d\n", strlen(arr[1]));// err
+	printf("%d\n", strlen(&arr));// 6 - 整个数组地址
+	printf("%d\n", strlen(&arr + 1));// 随机值 - 数组后外面的地址
+	printf("%d\n", strlen(&arr[0] + 1));// 5 - 数组第二个元素地址
+	return 0;
+}
+
+int main()
+{
+	const char* p = "abcdef";
+
+	printf("%zu\n", sizeof(p));// 4/8 - p存放的是数组的地址，本质上的地址
+	printf("%zu\n", sizeof(p + 1));// 4/8 - 数组地址后一位，因为是char类型的数组
+	printf("%zu\n", sizeof(*p));// 1 - char*类型，解引用只能访问一个字节
+	printf("%zu\n", sizeof(p[0]));// 1 - 数组第一个元素
+	printf("%zu\n", sizeof(&p));// 4/8 - 取出指针p的地址
+	printf("%zu\n", sizeof(&p + 1));// 4/8 - p指针的地址向后移动一个数组的大小
+	printf("%zu\n", sizeof(&p[0] + 1));// 4/8 - p[0]首元素，&p[0]+1表示第二个元素地址
+
+	printf("%d\n", strlen(p));// 6 - p存的地址就是数组首元素地址
+	printf("%d\n", strlen(p + 1));// 5 - p存的地址向后移动一个字节，数组第二个数据的地址
+	printf("%d\n", strlen(*p));// err
+	printf("%d\n", strlen(p[0]));// err
+	printf("%d\n", strlen(&p));// 随机值 - &p是取出p的地址，随机给定的
+	printf("%d\n", strlen(&p + 1));// 随机值 - 数组外的地址
+	printf("%d\n", strlen(&p[0] + 1));// 5 - &p[0]+1,取出第一个元素地址，加一为第二个元素地址
+	return 0;
+}
+
