@@ -87,13 +87,25 @@
 //}
 
 
-// ±  ‘Ã‚5:
+// ±  ‘Ã‚6:
+//#include <stdio.h>
+//int main()
+//{
+//	int aa[2][5] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int* ptr1 = (int*)(&aa + 1);
+//	int* ptr2 = (int*)(*(aa + 1));
+//	printf("%d,%d", *(ptr1 - 1), *(ptr2 - 1));// 10,5
+//	return 0;
+//}
+
+
+// ±  ‘Ã‚7:
 #include <stdio.h>
 int main()
 {
-	int aa[2][5] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	int* ptr1 = (int*)(&aa + 1);
-	int* ptr2 = (int*)(*(aa + 1));
-	printf("%d,%d", *(ptr1 - 1), *(ptr2 - 1));// 10,5
+	char* a[] = { "work","at","alibaba" };
+	char** pa = a;
+	pa++;
+	printf("%s\n", *pa);// at
 	return 0;
 }
