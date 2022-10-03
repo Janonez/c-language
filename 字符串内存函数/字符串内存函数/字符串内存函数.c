@@ -221,7 +221,7 @@
 //
 //	return 0;
 //}
-
+//
 //int main()
 //{
 //	char arr1[20] = "abc";
@@ -247,49 +247,49 @@
 
 
 // 1.8 strstr
-#include <stdio.h>
-#include <string.h>
-// 暴力求解
-char* my_strstr(const char* str1, const char* str2)
-{
-	const char* s1 = str1;
-	const char* s2 = str2;
-	const char* p = str1;
-	if (*str2 == '\0')
-	{
-		return str1;
-	}
-	while (*p)
-	{
-		s1 = p;
-		s2 = str2;
-		while (*s1 != '\0' && *s2 != '\0' && (*s1 == *s2))
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == '\0')
-		{
-			return (char*)p;//找到了
-		}
-		p++;
-	}
-	return NULL;//找不到子串
-}
-int main()
-{
-	char arr1[] = "abcdefabcdef";
-	char arr2[] = "cde";
-
-	// char* p = strstr(arr1, arr2);
-	char* p = my_strstr(arr1, arr2);
-	if (p == NULL)
-	{
-		printf("不存在\n");
-	}
-	else
-	{
-		printf("%s\n", p);
-	}
-	return 0;
-}
+//#include <stdio.h>
+//#include <string.h>
+//// 暴力求解
+//char* my_strstr(const char* str1, const char* str2)
+//{
+//	const char* s1 = str1;
+//	const char* s2 = str2;
+//	const char* p = str1;
+//	if (*str2 == '\0')
+//	{
+//		return str1;
+//	}
+//	while (*p)
+//	{
+//		s1 = p;
+//		s2 = str2;
+//		while (*s1 != '\0' && *s2 != '\0' && (*s1 == *s2))
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return (char*)p;//找到了
+//		}
+//		p++;
+//	}
+//	return NULL;//找不到子串
+//}
+//int main()
+//{
+//	char arr1[] = "abcdefabcdef";
+//	char arr2[] = "cde";
+//
+//	// char* p = strstr(arr1, arr2);
+//	char* p = my_strstr(arr1, arr2);
+//	if (p == NULL)
+//	{
+//		printf("不存在\n");
+//	}
+//	else
+//	{
+//		printf("%s\n", p);
+//	}
+//	return 0;
+//}
