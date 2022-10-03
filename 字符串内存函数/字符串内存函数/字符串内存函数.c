@@ -293,3 +293,89 @@
 //	}
 //	return 0;
 //}
+
+
+// 1.9 strtok
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char arr[] = "906269785@.qq.com";
+	char buf[20] = { 0 };
+	strcpy(buf, arr);
+	const char* p = "@.";
+	/*char* str = strtok(buf, p);
+	printf("%s\n", str);
+	str = strtok(NULL, p);
+	printf("%s\n", str);
+	str = strtok(NULL, p);
+	printf("%s\n", str);*/
+	// 简化代码
+	char* str = NULL;
+	for (str = strtok(buf, p); str != NULL; str = strtok(NULL, p))
+	{
+		printf("%s\n", str);
+	}
+	return 0;
+}
+
+
+// 1.10 strerror
+// 把错误码转换成错误信息
+//#include <stdio.h>
+//#include <string.h>
+//#include <errno.h>
+//int main()
+//{
+//	printf("%s\n", strerror(0));
+//	printf("%s\n", strerror(1));
+//	printf("%s\n", strerror(2));
+//	printf("%s\n", strerror(3));
+//	printf("%s\n", strerror(4));
+//	//错误码记录到错误码的变量中
+//	//errno - C语言提供的全局的错误变量
+//	FILE* pf = fopen("test.txt", "r");
+//	if (pf == NULL)
+//	{
+//		perror("fopen");//打印的依然是errno变量中错误码对应的错误信息
+//		printf("%s\n", strerror(errno));
+//		return 1;
+//	}
+//	//读文件
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+
+// 字符分类函数：
+#include <stdio.h>
+#include <ctype.h>
+//int main()
+//{
+//	char ch1 = 'a';
+//	int ret = isdigit(ch1);
+//	printf("%d\n", ret);
+//
+//	char ch2 = 'W';
+//	//	//printf("%c\n", toupper(ch));//ch-32
+//	printf("%c\n", tolower(ch2));//ch+32
+//	
+//	return 0;
+//}
+
+//int main()
+//{
+//	char arr[] = "Are you ok?";
+//	char* p = arr;
+//	while (*p)
+//	{
+//		if (islower(*p))
+//		{
+//			*p = toupper(*p);
+//		}
+//		p++;
+//	}
+//	printf("%s\n", arr);
+//	return 0;
+//}
