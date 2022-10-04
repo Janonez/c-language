@@ -296,28 +296,28 @@
 
 
 // 1.9 strtok
-#include <stdio.h>
-#include <string.h>
-int main()
-{
-	char arr[] = "906269785@.qq.com";
-	char buf[20] = { 0 };
-	strcpy(buf, arr);
-	const char* p = "@.";
-	/*char* str = strtok(buf, p);
-	printf("%s\n", str);
-	str = strtok(NULL, p);
-	printf("%s\n", str);
-	str = strtok(NULL, p);
-	printf("%s\n", str);*/
-	// 简化代码
-	char* str = NULL;
-	for (str = strtok(buf, p); str != NULL; str = strtok(NULL, p))
-	{
-		printf("%s\n", str);
-	}
-	return 0;
-}
+//#include <stdio.h>
+//#include <string.h>
+//int main()
+//{
+//	char arr[] = "906269785@qq.com";
+//	char buf[20] = { 0 };
+//	strcpy(buf, arr);
+//	const char* p = "@.";
+//	/*char* str = strtok(buf, p);
+//	printf("%s\n", str);
+//	str = strtok(NULL, p);
+//	printf("%s\n", str);
+//	str = strtok(NULL, p);
+//	printf("%s\n", str);*/
+//	// 简化代码
+//	char* str = NULL;
+//	for (str = strtok(buf, p); str != NULL; str = strtok(NULL, p))
+//	{
+//		printf("%s\n", str);
+//	}
+//	return 0;
+//}
 
 
 // 1.10 strerror
@@ -379,3 +379,87 @@ int main()
 //	printf("%s\n", arr);
 //	return 0;
 //}
+
+
+// 1.11 memcpy
+// 1.12 memmove
+//#include <stdio.h>
+//#include <string.h>
+//#include <assert.h>
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int arr2[10] = { 0 };
+//	memcpy(arr2, arr1, 20);
+//
+//	float arr3[] = { 1.0f,2.0f,3.0f,4.0f,5.0f };
+//	float arr4[20] = { 0 };
+//	memcpy(arr4, arr3, 8);
+//	return 0;
+//}
+
+//void* my_memcpy(void* dest, const void* src,size_t num)
+//{
+//	void* ret = dest;
+//	assert(dest && src);
+//	while (num--)
+//	{
+//		*(char*)ret = *(char*)src;
+//		ret = (char*)ret + 1;
+//		src = (char*)src + 1;
+//	}
+//	return dest;
+//}
+//void* my_memmove(void* dest, const void* src, size_t num)
+//{
+//	void* ret = dest;
+//	assert(dest && src);
+//	if (dest < src)
+//	{
+//		while (num--)
+//		{
+//			*(char*)ret = *(char*)src;
+//			ret = (char*)ret + 1;
+//			src = (char*)src + 1;
+//		}
+//	}
+//	else
+//	{
+//		while (num--)
+//		{
+//			*((char*)ret+num) = *((char*)src+num);
+//		}
+//	}
+//	return dest;
+//}
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	//memcpy(arr1 + 2, arr1, 20);
+//	my_memmove(arr1 + 2, arr1, 20);
+//
+//	/*int arr2[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int arr3[20] = { 0 };
+//	my_memcpy(arr3, arr2, 20);*/
+//	int i = 0;
+//	for(i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr1[i]);
+//	}
+//	float arr3[] = { 1.0f,2.0f,3.0f,4.0f };
+//	float arr4[5] = { 0.0 };
+//	my_memcpy(arr4, arr3, 8);
+//	return 0;
+//}
+
+
+// 1.13 memcmp
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int arr1[] = { 1,2,3,4,5 };
+	int arr2[] = { 1,2,65536,4,5 };
+	printf("%d\n", memcmp(arr1, arr2, 12));
+	return 0;
+}
