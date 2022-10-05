@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-#include <stdio.h>
-#include <Windows.h>
+//#include <stdio.h>
+//#include <Windows.h>
 
 //int main()
 //{
@@ -53,15 +53,41 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	float a = 5.5f;
+//	// (-1)^0 * 1.011 * 2^2
+//	// S = 0       (-1)^S表示符号位
+//	// M = 1.011   M表示有效数字
+//	// E = 2       2^E表示指数位,存在内存中float类型+127，double类型+1023
+//	// 0 10000001 01100000000000000000000
+//	// 40b00000
+//	
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//    char a = 128;
+//    /*signed char b = -1;
+//    unsigned char c = -1;*/
+//    printf("a=%u\n", a);
+//    return 0;
+//}
+#include <stdio.h>
 int main()
 {
-	float a = 5.5f;
-	// (-1)^0 * 1.011 * 2^2
-	// S = 0       (-1)^S表示符号位
-	// M = 1.011   M表示有效数字
-	// E = 2       2^E表示指数位,存在内存中float类型+127，double类型+1023
-	// 0 10000001 01100000000000000000000
-	// 40b00000
-	
-	return 0;
+    char a[1000] = { 0 };
+    int i = 0;
+    for (i = 0; i < 1000; i++)
+    {
+        a[i] = -1 - i;
+    }
+    printf("%d\n", strlen(a));
+    for (i = 0; i < 1000; i++)
+    {
+        printf("%d ",a[i]);
+    }
+    return 0;
 }
