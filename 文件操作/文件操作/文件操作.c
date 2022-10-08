@@ -18,6 +18,7 @@
 //	}
 //
 //	// 写文件  fputc - 单个字符输出（写到文件中）
+//  // int fputc ( int character, FILE * stream );
 //	fputc('a', pf);
 //	fputc('b', pf);
 //	fputc('c', pf);
@@ -63,6 +64,7 @@
 //		return 1;
 //	}
 //	// 读文件
+//  // int fgetc ( FILE * stream );
 //	/*int i = 0;
 //	for (i = 0; i < 26; i++)
 //	{
@@ -94,6 +96,7 @@
 //	}
 // 
 //	// 写文件 - 一行一行写
+//  // int fputs ( const char * str, FILE * stream );
 //	fputs("hello\n", pf);
 //	fputs("world\n", pf);
 // 
@@ -113,6 +116,7 @@
 //		return 1;
 //	}
 //	// 写文件 - 一行一行读，存到数组中
+//  // char * fgets ( char * str, int num, FILE * stream );
 //	char arr[20] = "###############";
 //	fgets(arr,20,pf);
 //	printf("%s", arr);
@@ -142,6 +146,7 @@
 //		return 1;
 //	}
 //	// 写文件
+//  // int fprintf ( FILE * stream, const char * format, ... );
 //	fprintf(pf, "%s %d %.2lf", s.name, s.age, s.score);
 //
 //	fclose(pf);
@@ -150,6 +155,80 @@
 //}
 
 //读取一个结构体数据
+//struct S
+//{
+//	char name[20];
+//	int age;
+//	float score;
+//};
+//
+//int main()
+//{
+//	struct S s = {0};
+//	//把s中的数据写到文件中
+//	FILE* pf = fopen("test.txt", "r");
+//	if (NULL == pf)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//	// 读文件
+//  // int fscanf ( FILE * stream, const char * format, ... );
+//	fscanf(pf, "%s %d %f", s.name, &(s.age), &(s.score));
+//
+//	printf("%s %d %f\n", s.name, s.age, s.score);
+//
+//	fclose(pf);
+//	pf = NULL;
+//
+//	return 0;
+//}
+
+
+//scanf(...)
+//fscanf(stdin,...)
+
+//printf
+//fprintf(stdout, ...)
+
+//int main()
+//{
+//	int ch = fgetc(stdin);
+//	fputc(ch, stdout);
+//
+//	return 0;
+//}
+
+//二进制的形式：写一个结构体的数据
+
+//struct S
+//{
+//	char name[20];
+//	int age;
+//	float score;
+//};
+//
+//int main()
+//{
+//	struct S s = { "zhangsan", 20, 95.5f };
+//	//把s中的数据写到文件中
+//	FILE*pf = fopen("test.txt", "wb");
+//	if (NULL == pf)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//	// 二进制的写文件
+//	// size_t fwrite ( const void * ptr, size_t size, size_t count, FILE * stream );
+//	fwrite(&s, sizeof(s), 1, pf);
+//
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+
+//二进制的读文件
 struct S
 {
 	char name[20];
@@ -160,20 +239,20 @@ struct S
 int main()
 {
 	struct S s = {0};
-	//把s中的数据写到文件中
-	FILE* pf = fopen("test.txt", "r");
+	// 把s中的数据写到文件中
+	FILE* pf = fopen("test.txt", "rb");
 	if (NULL == pf)
 	{
 		perror("fopen");
 		return 1;
 	}
-	//读文件
-	fscanf(pf, "%s %d %f", s.name, &(s.age), &(s.score));
+	// 二进制的读文件
+	// size_t fread(void* ptr, size_t size, size_t count, FILE * stream);
+	fread(&s, sizeof(s), 1, pf);
 
-	printf("%s %d %f\n", s.name, s.age, s.score);
+	printf("%s %d %.2f\n", s.name, s.age, s.score);
 
 	fclose(pf);
 	pf = NULL;
-
 	return 0;
 }
