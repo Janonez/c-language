@@ -157,14 +157,24 @@
 // 6.Ä£ÄâÊµÏÖmemcpy
 // void * memcpy ( void * des, const void * src, size_t num );
 #include <stdio.h>
-void * memcpy ( void * des, const void * src, size_t num )
+#include <assert.h>
+void* my_memcpy ( void * des, const void * src, size_t num )
 {
-
+	void* ret = des;
+	assert(des);
+	assert(src);
+	while (num--)
+	{
+		*(char*)des = *(char*)src;
+		des = (char*)des + 1;
+		src = (char*)src + 1;
+	}
+	return ret;
 }
 int main()
 {
-	char arr1[20];
+	char arr1[20]={0};
 	char arr2[20] = "Hello World";
-	printf("%s\n", my_memcpy(arr1, arr2, 20));
+	printf("%s\n", my_memcpy(arr1, arr2, 11));
 	return 0;
 }
