@@ -116,39 +116,55 @@
 
 
 // 5.模拟实现strstr
+//#include <stdio.h>
+//char* my_strstr(const char* str1, const char* str2)
+//{
+//	const char* s1 = str1;
+//	const char* s2 = str2;
+//	const char* p = str1;
+//	while (*p)
+//	{
+//		s1 = p;
+//		s2 = str2;
+//		while ( *s1 != '\0'&& *s2 != '\0' && * s1 == *s2)
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//			return p;
+//		p++;
+//	}
+//	return NULL;
+//}
+//int main()
+//{
+//	char arr1[] = "abbccdef";
+//	char arr2[] = "bcd";
+//	char* p = my_strstr(arr1, arr2);
+//	if (p == NULL)
+//	{
+//		printf("不存在\n");
+//	}
+//	else
+//	{
+//		printf("%s\n", p);
+//	}
+//	return 0;
+//}
+
+
+// 6.模拟实现memcpy
+// void * memcpy ( void * des, const void * src, size_t num );
 #include <stdio.h>
-char* my_strstr(const char* str1, const char* str2)
+void * memcpy ( void * des, const void * src, size_t num )
 {
-	const char* s1 = str1;
-	const char* s2 = str2;
-	const char* p = str1;
-	while (*p)
-	{
-		s1 = p;
-		s2 = str2;
-		while ( *s1 != '\0'&& *s2 != '\0' && * s1 == *s2)
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == '\0')
-			return p;
-		p++;
-	}
-	return NULL;
+
 }
 int main()
 {
-	char arr1[] = "abbccdef";
-	char arr2[] = "bcd";
-	char* p = my_strstr(arr1, arr2);
-	if (p == NULL)
-	{
-		printf("不存在\n");
-	}
-	else
-	{
-		printf("%s\n", p);
-	}
+	char arr1[20];
+	char arr2[20] = "Hello World";
+	printf("%s\n", my_memcpy(arr1, arr2, 20));
 	return 0;
 }
