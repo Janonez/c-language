@@ -229,30 +229,32 @@
 
 
 //二进制的读文件
-struct S
-{
-	char name[20];
-	int age;
-	float score;
-};
+//struct S
+//{
+//	char name[20];
+//	int age;
+//	float score;
+//};
+//
+//int main()
+//{
+//	struct S s = {0};
+//	// 把s中的数据写到文件中
+//	FILE* pf = fopen("test.txt", "rb");
+//	if (NULL == pf)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//	// 二进制的读文件
+//	// size_t fread(void* ptr, size_t size, size_t count, FILE * stream);
+//	fread(&s, sizeof(s), 1, pf);
+//
+//	printf("%s %d %.2f\n", s.name, s.age, s.score);
+//
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
 
-int main()
-{
-	struct S s = {0};
-	// 把s中的数据写到文件中
-	FILE* pf = fopen("test.txt", "rb");
-	if (NULL == pf)
-	{
-		perror("fopen");
-		return 1;
-	}
-	// 二进制的读文件
-	// size_t fread(void* ptr, size_t size, size_t count, FILE * stream);
-	fread(&s, sizeof(s), 1, pf);
 
-	printf("%s %d %.2f\n", s.name, s.age, s.score);
-
-	fclose(pf);
-	pf = NULL;
-	return 0;
-}

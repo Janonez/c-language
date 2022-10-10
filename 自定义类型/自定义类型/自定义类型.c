@@ -175,55 +175,96 @@
 //那在设计结构体的时候，我们既要满足对齐，又要节省空间，如何做到：
 //让占用空间小的成员尽量集中在一起。
 
-#include <stdio.h>
-#pragma pack(8)//设置默认对齐数为8
-struct S1
-{
-	char c1;
-	int i;
-	char c2;
-};
-#pragma pack()//取消设置的默认对齐数，还原为默认
-#pragma pack(1)//设置默认对齐数为1
-struct S2
-{
-	char c1;
-	int i;
-	char c2;
-};
-#pragma pack()//取消设置的默认对齐数，还原为默认
-int main()
-{
-	//输出的结果是什么？
-	printf("%d\n", sizeof(struct S1));
-	printf("%d\n", sizeof(struct S2));
-	return 0;
-}
+//#include <stdio.h>
+//#pragma pack(8)//设置默认对齐数为8
+//struct S1
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//#pragma pack()//取消设置的默认对齐数，还原为默认
+//#pragma pack(1)//设置默认对齐数为1
+//struct S2
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//#pragma pack()//取消设置的默认对齐数，还原为默认
+//int main()
+//{
+//	//输出的结果是什么？
+//	printf("%d\n", sizeof(struct S1));
+//	printf("%d\n", sizeof(struct S2));
+//	return 0;
+//}
 
 
 // 1.6 结构体传参
-struct S
-{
-	int data[1000];
-	int num;
-};
-struct S s = { {1,2,3,4}, 1000 };
-//结构体传参
-void print1(struct S s)
-{
-	printf("%d\n", s.num);
-}
-//结构体地址传参
-void print2(struct S* ps)
-{
-	printf("%d\n", ps->num);
-}
-int main()
-{
-	print1(s); //传结构体
-	print2(&s); //传地址
-	return 0;
-}
+//struct S
+//{
+//	int data[1000];
+//	int num;
+//};
+//struct S s = { {1,2,3,4}, 1000 };
+////结构体传参
+//void print1(struct S s)
+//{
+//	printf("%d\n", s.num);
+//}
+////结构体地址传参
+//void print2(struct S* ps)
+//{
+//	printf("%d\n", ps->num);
+//}
+//int main()
+//{
+//	print1(s); //传结构体
+//	print2(&s); //传地址
+//	return 0;
+//}
 // 结构体传参的时候，要传结构体的地址。
 // 函数传参的时候，参数是需要压栈，会有时间和空间上的系统开销。
 // 如果传递一个结构体对象的时候，结构体过大，参数压栈的的系统开销比较大，所以会导致性能的下降。
+
+
+
+// 位段
+#include <stdio.h>
+
+//struct S
+//{
+//	int a;
+//	int b;
+//	int c;
+//	int d;
+//};
+//struct A
+//{
+//	int _a : 2;
+//	int _b : 5;
+//	int _c : 10;
+//	int _d : 30;
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(struct S));
+//	printf("%d\n", sizeof(struct A));
+//	return 0;
+//}
+
+struct C
+{
+	char _a : 3;
+	char _b : 4;
+	char _c : 5;
+	char _d : 4;
+
+};
+int main()
+{
+	printf("%d\n", sizeof(struct C));
+	//printf("%d\n", sizeof(struct A));
+	return 0;
+}
