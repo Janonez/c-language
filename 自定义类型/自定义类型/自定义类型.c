@@ -230,8 +230,8 @@
 
 
 
-// Î»¶Î
-#include <stdio.h>
+// 2.Î»¶Î
+//#include <stdio.h>
 
 //struct S
 //{
@@ -254,17 +254,19 @@
 //	return 0;
 //}
 
-struct C
-{
-	char _a : 3;
-	char _b : 4;
-	char _c : 5;
-	char _d : 4;
+//struct C
+//{
+//	char _a : 3;
+//	char _b : 4;
+//	char _c : 5;
+//	char _d : 4;
+//
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(struct C));
+//	//printf("%d\n", sizeof(struct A));
+//	return 0;
+//}
 
-};
-int main()
-{
-	printf("%d\n", sizeof(struct C));
-	//printf("%d\n", sizeof(struct A));
-	return 0;
-}
+
