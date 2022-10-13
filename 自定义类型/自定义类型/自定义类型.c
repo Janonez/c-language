@@ -270,3 +270,44 @@
 //}
 
 
+// 3.枚举
+//#include <stdio.h>
+//
+//enum Color
+//{
+//	// 枚举的可能取值
+//	// 每一个可能的值是常量
+//	RED = 2,
+//	GREEN = 5,
+//	BLUE
+//};
+//
+//int main()
+//{
+//	//enum Color color = BLUE;
+//	printf("%d\n", RED);
+//	printf("%d\n", GREEN);
+//	printf("%d\n", BLUE);
+//	return 0;
+//}
+
+// 4.联合
+#include <stdio.h>
+
+union Un
+{
+	char c;
+	int i;
+	double d;
+};
+int main()
+{
+	union Un un;
+	printf("%d\n", sizeof(union Un));
+	printf("%d\n", sizeof(un));
+	printf("%p\n", &un);
+	printf("%p\n", &(un.c));
+	printf("%p\n", &(un.i));
+	printf("%p\n", &(un.d));
+	return 0;
+}

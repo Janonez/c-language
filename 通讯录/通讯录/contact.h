@@ -42,4 +42,4 @@ void ModifyContact(struct Contact* pc);
 // 排序通讯录中的信息-以年龄为例
 void SortContact(struct Contact* pc);
 // 清空所有联系人
-void FormatContact(struct Contact* pc);
+//void FormatContact(struct Contact* pc);

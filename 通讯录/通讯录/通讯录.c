@@ -1,5 +1,15 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "contact.h"
+enum Option
+{
+	EXIT,
+	ADD,
+	DEL,
+	SEARCH,
+	MODIFY,
+	SHOW,
+	SORT
+};
 int main()
 {
 	int input = 0;
@@ -17,28 +27,28 @@ int main()
 
 		switch (input)
 		{
-		case 1:
+		case ADD:
 			AddContact(&con);
 			break;
-		case 2:
+		case DEL:
 			DelContact(&con);
 			break;
-		case 3:
+		case SEARCH:
 			SearchContact(&con);
 			break;
-		case 4:
+		case MODIFY:
 			ModifyContact(&con);
 			break;
-		case 5:	
+		case SHOW:	
 			ShowContact(&con);
 			break;
-		case 6:
-			FormatContact(&con);
-			break;
-		case 7:
+		case SORT:
 			SortContact(&con);
 			break;
-		case 0:
+		/*case 7:
+			FormatContact(&con);
+			break;*/
+		case EXIT:
 			printf("�˳�ͨѶ¼\n");
 			break;
 		default:

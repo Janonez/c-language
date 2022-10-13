@@ -13,8 +13,8 @@ void menu()
 	printf("*****************************************\n");
 	printf("*****      1.ADD       2.DEL      *******\n");
 	printf("*****      3.SEARCH    4.MODIFY   *******\n");
-	printf("*****      5.SHOW      6.FORMAT   *******\n");
-	printf("*****      7.SORT      0.EXIT     *******\n");
+	printf("*****      5.SHOW      6.SORT     *******\n");
+	printf("*****      0.EXIT                 *******\n");
 	printf("*****************************************\n");
 }
 // 增加人的信息到通讯录
@@ -159,17 +159,17 @@ void SortContact(struct Contact* pc)
 	qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpByName);
 }
 
-// 清空所有联系人
-void FormatContact(struct Contact* pc)
-{
-	printf("是否清空所有联系人？（1/0）\n");
-	int flag = 0;
-	scanf("%d", &flag);
-	if (flag == 1)
-	{
-		InitContact(pc);
-		printf("成功清空联系人\n");
-	}
-	else
-		printf("取消清空联系人\n");
-}
+//// 清空所有联系人
+//void FormatContact(struct Contact* pc)
+//{
+//	printf("是否清空所有联系人？（1/0）\n");
+//	int flag = 0;
+//	scanf("%d", &flag);
+//	if (flag == 1)
+//	{
+//		InitContact(pc);
+//		printf("成功清空联系人\n");
+//	}
+//	else
+//		printf("取消清空联系人\n");
+//}
