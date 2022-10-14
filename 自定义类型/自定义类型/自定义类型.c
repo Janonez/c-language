@@ -292,22 +292,67 @@
 //}
 
 // 4.联合
-#include <stdio.h>
+//#include <stdio.h>
+//
+//union Un
+//{
+//	char c;
+//	int i;
+//	double d;
+//};
+//int main()
+//{
+//	union Un un;
+//	printf("%d\n", sizeof(union Un));
+//	printf("%d\n", sizeof(un));
+//	printf("%p\n", &un);
+//	printf("%p\n", &(un.c));
+//	printf("%p\n", &(un.i));
+//	printf("%p\n", &(un.d));
+//	return 0;
+//}
 
-union Un
+// 4.2 联合的特点
+// 联合示例 - 大小端测试
+//#include <stdio.h>
+//int check_sys()
+//{
+//	union Un
+//	{
+//		char c;
+//		int i;
+//	}u;
+//	// 联合体共用同一块内存空间
+//	u.i = 1;
+//	return u.c;
+//}
+//int main()
+//{
+//	int ret = check_sys();
+//	if (ret == 1)
+//		printf("小端\n");
+//	else
+//		printf("大端\n");
+//	return 0;
+//}
+
+// 4.3 联合大小的计算
+// 联合的大小至少是最大成员的大小。
+// 当最大成员大小不是最大对齐数的整数倍的时候，就要对齐到最大对齐数的整数倍。
+#include <stdio.h>
+union Un1
 {
-	char c;
-	int i;
-	double d;
+	char c[5]; // 大小：5 对齐数：1
+	int i; // 大小：4 对齐数：4
+};
+union Un2
+{
+	short c[7]; // 大小：14 对齐数：2
+	int i; // 大小：4 对齐数：4
 };
 int main()
 {
-	union Un un;
-	printf("%d\n", sizeof(union Un));
-	printf("%d\n", sizeof(un));
-	printf("%p\n", &un);
-	printf("%p\n", &(un.c));
-	printf("%p\n", &(un.i));
-	printf("%p\n", &(un.d));
+	printf("%d\n", sizeof(union Un1));
+	printf("%d\n", sizeof(union Un2));
 	return 0;
 }
