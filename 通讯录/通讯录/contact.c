@@ -1,11 +1,24 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include "contact.h"
-// 初始化通讯录
+// 初始化通讯录 - 静态版本
+//void InitContact(struct Contact* pc)
+//{
+//	pc->sz = 0;
+//	memset(pc->data, 0, MAX * sizeof(struct PeoInfo));
+//}
+// 初始化通讯录 - 动态版本
 void InitContact(struct Contact* pc)
 {
+	assert(pc);
+	pc->data = (struct PeoInfo*)malloc(DEFAULT_SZ * sizeof(struct PeoInfo));
+	if (pc->data == NULL)
+	{
+		perror("InitContact()");
+		return;
+	}
 	pc->sz = 0;
-	memset(pc->data, 0, MAX * sizeof(struct PeoInfo));
+	pc->capacity = DEFAULT_SZ;
 }
 // 菜单
 void menu()
@@ -17,15 +30,63 @@ void menu()
 	printf("*****      0.EXIT                 *******\n");
 	printf("*****************************************\n");
 }
-// 增加人的信息到通讯录
+// 增加人的信息到通讯录 - 静态版本
+//void AddContact(struct Contact* pc)
+//{
+//	// 判断
+//	if (pc->sz == 100)
+//	{
+//		printf("通讯录已满，无法添加数据\n");
+//		return;
+//	}
+//	// 添加人的信息
+//	printf("请输入名字：");
+//	scanf("%s", pc->data[pc->sz].name);
+//	printf("请输入性别：");
+//	scanf("%s", pc->data[pc->sz].sex);
+//	printf("请输入电话：");
+//	scanf("%s", pc->data[pc->sz].tele);
+//	printf("请输入年龄：");
+//	scanf("%d", &(pc->data[pc->sz].age));
+//	printf("请输入地址：");
+//	scanf("%s", pc->data[pc->sz].addr);
+//
+//	pc->sz++;
+//	printf("成功添加联系人\n");
+//}
+// 
+// 
+int check_capacity(struct Contact* pc)
+{
+	if (pc->capacity == pc->sz)
+	{
+		struct PeoInfo* ptr = (struct PeoInfo*)realloc(pc->data, (pc->capacity + INC_SZ) * sizeof(struct PeoInfo));
+		if (ptr == NULL)
+		{
+			perror("AddContact()");
+			return 0;
+		}
+		else
+		{
+			pc->data = ptr;
+			pc->capacity += INC_SZ;
+			printf("增容成功\n");
+			return 1;
+		}
+	}
+	else
+		return 1;
+}
+// 增加人的信息到通讯录 - 动态增长的版本
 void AddContact(struct Contact* pc)
 {
 	// 判断
-	if (pc->sz == 100)
+	assert(pc);
+	if (0 == check_capacity(pc))
 	{
-		printf("通讯录已满，无法添加数据\n");
 		return;
 	}
+
 	// 添加人的信息
 	printf("请输入名字：");
 	scanf("%s", pc->data[pc->sz].name);

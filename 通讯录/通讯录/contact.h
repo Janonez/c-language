@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #define MAX 100
 #define MAX_NAME 20
@@ -10,6 +11,8 @@
 #define MAX_TELE 12
 #define MAX_ADDR 30
 
+#define DEFAULT_SZ 3
+#define INC_SZ 2
 // 表示一个人的信息
 struct PeoInfo
 {
@@ -20,11 +23,18 @@ struct PeoInfo
 	char addr[MAX_ADDR];
 };
 
-// 创建通讯录
+// 创建通讯录 - 静态版本
+//struct Contact
+//{
+//	struct PeoInfo data[MAX];
+//	int sz;
+//};
+// 创建通讯录 - 动态版本
 struct Contact
 {
-	struct PeoInfo data[MAX];
-	int sz;
+	struct PeoInfo* data;// 指向了存放数据的空间
+	int sz;// 已经放进去的信息
+	int capacity;// 容量
 };
 void menu();
 // 初始化通讯录

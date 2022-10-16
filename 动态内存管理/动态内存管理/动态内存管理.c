@@ -29,24 +29,24 @@
 //}
 //
 ////calloc
-int main()
-{
-	//40个字节 - 10个整型
-	//malloc(40);
-	int* p = (int*)calloc(10, sizeof(int));
-	if (p == NULL)
-	{
-		perror("calloc");
-		return 1;
-	}
-	int i = 0;
-	for (i = 0; i < 10; i++)
-	{
-		*(p + i) = i;
-	}
-	//释放
-	free(p);
-	p = NULL;
-
-	return 0;
-}
+//int main()
+//{
+//	//40个字节 - 10个整型
+//	//malloc(40);
+//	int* p = (int*)calloc(10, sizeof(int));
+//	if (p == NULL)
+//	{
+//		perror("calloc");
+//		return 1;
+//	}
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		*(p + i) = i;
+//	}
+//	//释放
+//	free(p);
+//	p = NULL;
+//
+//	return 0;
+//}

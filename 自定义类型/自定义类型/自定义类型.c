@@ -339,20 +339,42 @@
 // 4.3 联合大小的计算
 // 联合的大小至少是最大成员的大小。
 // 当最大成员大小不是最大对齐数的整数倍的时候，就要对齐到最大对齐数的整数倍。
+//#include <stdio.h>
+//union Un1
+//{
+//	char c[5]; // 大小：5 对齐数：1
+//	int i; // 大小：4 对齐数：4
+//};
+//union Un2
+//{
+//	short c[7]; // 大小：14 对齐数：2
+//	int i; // 大小：4 对齐数：4
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(union Un1));
+//	printf("%d\n", sizeof(union Un2));
+//	return 0;
+//}
+
 #include <stdio.h>
-union Un1
-{
-	char c[5]; // 大小：5 对齐数：1
-	int i; // 大小：4 对齐数：4
-};
-union Un2
-{
-	short c[7]; // 大小：14 对齐数：2
-	int i; // 大小：4 对齐数：4
-};
+#include <stdlib.h>
 int main()
 {
-	printf("%d\n", sizeof(union Un1));
-	printf("%d\n", sizeof(union Un2));
-	return 0;
+    unsigned char puc[4];
+    struct tagPIM
+    {
+        unsigned char ucPim1;
+        unsigned char ucData0 : 1;
+        unsigned char ucData1 : 2;
+        unsigned char ucData2 : 3;
+    }*pstPimData;
+    pstPimData = (struct tagPIM*)puc;
+    memset(puc, 0, 4);
+    pstPimData->ucPim1 = 2;
+    pstPimData->ucData0 = 3;
+    pstPimData->ucData1 = 4;
+    pstPimData->ucData2 = 5;
+    printf("%02x %02x %02x %02x\n", puc[0], puc[1], puc[2], puc[3]);
+    return 0;
 }
