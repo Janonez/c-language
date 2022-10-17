@@ -1,25 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include "contact.h"
-// 初始化通讯录 - 静态版本
-//void InitContact(struct Contact* pc)
-//{
-//	pc->sz = 0;
-//	memset(pc->data, 0, MAX * sizeof(struct PeoInfo));
-//}
-// 初始化通讯录 - 动态版本
-void InitContact(struct Contact* pc)
-{
-	assert(pc);
-	pc->data = (struct PeoInfo*)malloc(DEFAULT_SZ * sizeof(struct PeoInfo));
-	if (pc->data == NULL)
-	{
-		perror("InitContact()");
-		return;
-	}
-	pc->sz = 0;
-	pc->capacity = DEFAULT_SZ;
-}
+
 // 菜单
 void menu()
 {
@@ -30,6 +12,39 @@ void menu()
 	printf("*****      0.EXIT                 *******\n");
 	printf("*****************************************\n");
 }
+
+// 初始化通讯录 - 静态版本
+//void InitContact(struct Contact* pc)
+//{
+//	pc->sz = 0;
+//	// void* memset(void* ptr, int value, size_t num);
+//	memset(pc->data, 0, MAX * sizeof(struct PeoInfo));
+//}
+
+// 初始化通讯录 - 动态版本
+void InitContact(struct Contact* pc)
+{
+	assert(pc);
+	// void* malloc (size_t size);
+	pc->data = (struct PeoInfo*)malloc(DEFAULT_SZ * sizeof(struct PeoInfo));
+	if (pc->data == NULL)
+	{
+		perror("InitContact()");
+		return; // return 后面也可以不跟任何数据，表示什么也不返回，仅仅用来结束函数。
+	}
+	pc->sz = 0;
+	pc->capacity = DEFAULT_SZ;
+}
+
+// 释放内存
+void DestoryContact(struct Contact* pc)
+{
+	free(pc->data);
+	pc->data = NULL;
+	pc->capacity = 0;
+	pc->sz = 0;
+}
+
 // 增加人的信息到通讯录 - 静态版本
 //void AddContact(struct Contact* pc)
 //{
@@ -54,35 +69,36 @@ void menu()
 //	pc->sz++;
 //	printf("成功添加联系人\n");
 //}
-// 
-// 
+ 
+// 检查容量动态增加内存函数
 int check_capacity(struct Contact* pc)
 {
 	if (pc->capacity == pc->sz)
 	{
+		// void* realloc (void* ptr, size_t size);
 		struct PeoInfo* ptr = (struct PeoInfo*)realloc(pc->data, (pc->capacity + INC_SZ) * sizeof(struct PeoInfo));
 		if (ptr == NULL)
 		{
 			perror("AddContact()");
-			return 0;
+			return 1;
 		}
 		else
 		{
 			pc->data = ptr;
 			pc->capacity += INC_SZ;
 			printf("增容成功\n");
-			return 1;
+			return 0;
 		}
 	}
 	else
-		return 1;
+		return 0;
 }
 // 增加人的信息到通讯录 - 动态增长的版本
 void AddContact(struct Contact* pc)
 {
 	// 判断
 	assert(pc);
-	if (0 == check_capacity(pc))
+	if (1 == check_capacity(pc))
 	{
 		return;
 	}

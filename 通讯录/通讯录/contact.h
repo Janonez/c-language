@@ -29,6 +29,7 @@ struct PeoInfo
 //	struct PeoInfo data[MAX];
 //	int sz;
 //};
+
 // 创建通讯录 - 动态版本
 struct Contact
 {
@@ -36,20 +37,32 @@ struct Contact
 	int sz;// 已经放进去的信息
 	int capacity;// 容量
 };
+// 释放内存
+void DestoryContact(struct Contact* pc);
+
+// 菜单
 void menu();
+
 // 初始化通讯录
 void InitContact(struct Contact* pc);
+
 // 增加人的信息到通讯录
 void AddContact(struct Contact* pc);
+
 // 打印人的信息到通讯录
 void ShowContact(const struct Contact* pc);
+
 // 删除通讯录中人的信息
 void DelContact(struct Contact* pc);
+
 // 查找通讯录中指定联系人
 void SearchContact(const struct Contact* pc);
+
 // 修改指定联系人信息
 void ModifyContact(struct Contact* pc);
+
 // 排序通讯录中的信息-以年龄为例
 void SortContact(struct Contact* pc);
+
 // 清空所有联系人
 //void FormatContact(struct Contact* pc);

@@ -17,11 +17,11 @@ int main()
 	struct Contact con;// 通讯录
 	// 初始化通讯录
 	InitContact(&con);
-	menu();
+	
 	do
 	{
 		
-		
+		menu();
 		printf("请选择：");
 		scanf("%d", &input);
 
@@ -49,6 +49,7 @@ int main()
 			FormatContact(&con);
 			break;*/
 		case EXIT:
+			DestoryContact(&con);
 			printf("退出通讯录\n");
 			break;
 		default:

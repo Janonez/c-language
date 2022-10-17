@@ -50,3 +50,61 @@
 //
 //	return 0;
 //}
+
+//3.1 对NULL指针的解引用操作
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+//int main()
+//{
+//	int* p = (int*)malloc(INT_MAX);
+//	if (p == NULL)
+//	{
+//		perror("malloc");
+//		return 1;
+//	}
+//	else
+//	{
+//		*p = 5;
+//	}
+//	
+//	free(p);
+//	p = NULL;
+//	
+//	return 0;
+//}
+
+// 3.2 对动态开辟空间的越界访问
+//int main()
+//{
+//	int*p = (int*)malloc(20);
+//	if (p == NULL)
+//		return 1;
+//	//使用
+//	int i = 0;
+//	for (i = 0; i < 20; i++) // 误把字节数当做循环次数，越界访问
+//	{
+//		*(p + i) = i;
+//		//p[i] = i;
+//	}
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("%d ", p[i]);
+//	}
+//	//释放
+//	free(p);
+//	p = NULL;
+//
+//	return 0;
+//}
+
+// 3.3 对非动态开辟内存使用free释放
+int main()
+{
+	int num = 10;
+	int* p = &num;
+	free(p);
+	p = NULL;
+
+	return 0;
+}
