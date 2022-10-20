@@ -21,6 +21,32 @@ void menu()
 //	memset(pc->data, 0, MAX * sizeof(struct PeoInfo));
 //}
 
+int check_capacity(struct Contact* pc);
+//加载文件中的信息，到通讯录中
+void LoadContact(struct Contact* pc)
+{
+	// 打开文件
+	FILE* pfr = fopen("data.txt", "rb");
+	if (pfr == NULL)
+	{
+		perror("LoadContact::fopen");
+		return;
+	}
+	// 读文件
+	struct PeoInfo tmp = { 0 };
+	while (fread(&tmp, sizeof(struct PeoInfo), 1, pfr))
+	{
+		//考虑增加容量的问题
+		check_capacity(pc);
+		pc->data[pc->sz] = tmp;
+		pc->sz++;
+	}
+	// 关闭文件
+	fclose(pfr);
+	pfr = NULL;
+}
+
+
 // 初始化通讯录 - 动态版本
 void InitContact(struct Contact* pc)
 {
@@ -34,6 +60,8 @@ void InitContact(struct Contact* pc)
 	}
 	pc->sz = 0;
 	pc->capacity = DEFAULT_SZ;
+	//加载文件中的信息，到通讯录中
+	LoadContact(pc);
 }
 
 // 释放内存
@@ -250,3 +278,25 @@ void SortContact(struct Contact* pc)
 //	else
 //		printf("取消清空联系人\n");
 //}
+
+
+// 保存通讯录信息到文件
+void SaveContact(struct Contact* pc)
+{
+	// 打开文件
+	FILE* pfw = fopen("data.txt", "wb");
+	if (pfw == NULL)
+	{
+		perror("SaveContact::fopen");
+		return;
+	}
+	// 写文件
+	int i = 0;
+	for (i = 0; i < pc->sz; i++)
+	{
+		fwrite(pc->data + i, sizeof(struct PeoInfo), 1, pfw);
+	}
+	// 关闭文件
+	fclose(pfw);
+	pfw = NULL;
+}

@@ -49,6 +49,7 @@ int main()
 			FormatContact(&con);
 			break;*/
 		case EXIT:
+			SaveContact(&con);
 			DestoryContact(&con);
 			printf("�˳�ͨѶ¼\n");
 			break;

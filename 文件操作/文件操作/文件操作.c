@@ -258,3 +258,31 @@
 //}
 
 
+#include <stdio.h>
+
+struct S
+{
+	char name[10];
+	int age;
+	float score;
+};
+
+
+
+int main()
+{
+	char buf[100] = {0};
+	struct S tmp = { 0 };
+
+	struct S s = { "zhangsan", 20, 95.5f };
+	//能够把这个结构体的数据，转换成字符串
+	//"zhangsan 20 95.5"
+	sprintf(buf, "%s %d %f", s.name, s.age, s.score);//以字符串的形式打印
+	printf("%s\n", buf);
+
+	//将buf中的字符串，还原成一个结构体数据
+	sscanf(buf, "%s %d %f", tmp.name, &(tmp.age), &(tmp.score));
+	printf("%s %d %f\n", tmp.name, tmp.age, tmp.score);//以结构的形式打印
+
+	return 0;
+}

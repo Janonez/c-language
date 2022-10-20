@@ -66,3 +66,6 @@ void SortContact(struct Contact* pc);
 
 // 清空所有联系人
 //void FormatContact(struct Contact* pc);
+
+// 保存通讯录信息到文件
+void SaveContact(struct Contact* pc);
