@@ -138,3 +138,42 @@
 //}
 
 
+int main()
+{
+	int arr[] = { 1,2,3,4,5,1,2,3,4,5,6,9 };
+	// 异或所有数字
+	int i = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int ret = 0;
+	for (i = 0; i < sz; i++)
+	{
+		ret ^= arr[i];
+	}
+	// ret 的结果就是两个单独的数 异或 的结果，二进制中一定有1（异或：二进制位相同为0，相异为1）
+	// 计算 ret 二进制中 1 在第几位
+	int pos = 0;
+	for (i = 0; i < 32; i++)
+	{
+		if (((ret >> i) & 1) == 1)
+		{
+			pos = i;
+			break;
+		}
+	}
+	// ret 中第POS位是1
+	// 把数组中第POS位为1的元素放到一起，保证两个单独的元素在不同组中异或，
+	// 因为每组只有一个不同的数，异或后只剩下不同的元素
+	int num1 = 0;
+	int num2 = 0;
+	for (i = 0; i < sz; i++)
+	{
+		if (((arr[i] >> pos) & 1) == 1)
+		{
+			num1 ^= arr[i];
+		}
+		else
+			num2 ^= arr[i];
+	}
+	printf("%d %d", num1, num2);
+	return 0;
+}
