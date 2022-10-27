@@ -454,12 +454,12 @@
 
 
 // 1.13 memcmp
-#include <stdio.h>
-#include <string.h>
-int main()
-{
-	int arr1[] = { 1,2,3,4,5 };
-	int arr2[] = { 1,2,65536,4,5 };
-	printf("%d\n", memcmp(arr1, arr2, 12));
-	return 0;
-}
+//#include <stdio.h>
+//#include <string.h>
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5 };
+//	int arr2[] = { 1,2,65536,4,5 };
+//	printf("%d\n", memcmp(arr1, arr2, 12));
+//	return 0;
+//}
