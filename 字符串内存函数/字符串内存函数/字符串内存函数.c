@@ -463,3 +463,10 @@
 //	printf("%d\n", memcmp(arr1, arr2, 12));
 //	return 0;
 //}
+
+#include <stdio.h>
+int main()
+{
+	int a = 0;
+	return 0;
+}
